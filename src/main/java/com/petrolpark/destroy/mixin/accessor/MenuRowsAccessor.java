@@ -11,14 +11,14 @@ import com.simibubi.create.infrastructure.gui.OpenCreateMenuButton.MenuRows;
 public interface MenuRowsAccessor {
     
     @Accessor(
-        value = "leftButtons",
+        value = "leftTextKeys",
         remap = false
     )
-    public List<String> getLeftButtons();
+    public List<String> getLeftTextKeys();
 
     @Accessor(
-        value = "rightButtons",
+        value = "rightTextKeys",
         remap = false
     )
-    public List<String> getRightButtons();
+    public List<String> getRightTextKeys();
 };

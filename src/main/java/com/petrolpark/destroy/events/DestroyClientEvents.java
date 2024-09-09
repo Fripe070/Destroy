@@ -13,6 +13,7 @@ import com.petrolpark.destroy.client.gui.button.OpenDestroyMenuButton;
 import com.petrolpark.destroy.config.DestroyAllConfigs;
 import com.petrolpark.destroy.item.SwissArmyKnifeItem;
 import com.petrolpark.destroy.item.renderer.SeismometerItemRenderer;
+import net.minecraft.client.resources.language.I18n;
 import com.petrolpark.destroy.mixin.accessor.MenuRowsAccessor;
 import com.petrolpark.destroy.util.CogwheelChainingHandler;
 import com.petrolpark.destroy.util.PollutionHelper;
@@ -110,11 +111,13 @@ public class DestroyClientEvents {
             menu = MenuRows.INGAME_MENU;
             rowIdx =  DestroyAllConfigs.CLIENT.configurationButtons.pauseMenuConfigButtonRow.get();
             offsetX =  DestroyAllConfigs.CLIENT.configurationButtons.pauseMenuConfigButtonOffsetX.get();
+        } else {
+            return;
         };
 
-        if (rowIdx != 0 && menu != null) {
+        if (rowIdx != 0) {
             boolean onLeft = offsetX < 0;
-            String target = (onLeft ? ((MenuRowsAccessor)menu).getLeftButtons() : ((MenuRowsAccessor)menu).getLeftButtons()).get(rowIdx - 1);
+            String target = I18n.get((onLeft ? ((MenuRowsAccessor)menu).getLeftTextKeys() : ((MenuRowsAccessor)menu).getRightTextKeys()).get(rowIdx - 1));
 
             int offsetX_ = offsetX;
             MutableObject<GuiEventListener> toAdd = new MutableObject<>(null);
